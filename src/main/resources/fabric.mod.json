@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "moemusic-neko-compat",
+  "version": "${version}",
+  "name": "MoeMusic Neko Compat",
+  "description": "Legacy NekoMusic client compatibility bridge for MoeMusic.",
+  "contact": {
+    "homepage": "https://github.com/lolicode-org/MoeMusic-NekoCompat",
+    "sources": "https://github.com/lolicode-org/MoeMusic-NekoCompat",
+    "issues": "https://github.com/lolicode-org/MoeMusic-NekoCompat/issues"
+  },
+  "authors": [
+    "KoishiMoe",
+    "OpenAI GPT-5"
+  ],
+  "license": "AGPL-3.0-or-later",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      {
+        "value": "org.lolicode.moemusic.nekocompat.NekoCompatMod",
+        "adapter": "kotlin"
+      }
+    ]
+  },
+  "depends": {
+    "fabricloader": "*",
+    "minecraft": ">=26.1",
+    "java": ">=25",
+    "fabric-api": "*",
+    "fabric-language-kotlin": "*",
+    "moemusic": "*"
+  }
+}
