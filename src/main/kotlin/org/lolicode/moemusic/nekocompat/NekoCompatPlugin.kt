@@ -8,8 +8,8 @@ import org.lolicode.moemusic.api.plugin.ServerSessionContext
 object NekoCompatPlugin : Plugin {
     override val id: String = "moemusic_neko_compat"
     override val configId: String = id
-    override val version: String = "1.0.0"
-    override val supportedApiVersions: String = ">=1.0.0 <2.0.0"
+    override val version: String = "1.1.0"
+    override val supportedApiVersions: String = ">=2.0.0 <3.0.0"
     override val displayName: LocalizedText = LocalizedText.plain("NekoMusic Compatibility Plugin")
 
     override fun onServerRuntimeLoad(ctx: ServerRuntimeContext) {

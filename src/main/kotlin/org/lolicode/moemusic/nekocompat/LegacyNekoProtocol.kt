@@ -106,6 +106,7 @@ internal object LegacyNekoProtocol {
             is PlaybackState.Playing -> ((nowNanos - track.serverStartMonotonic) / 1_000_000L).coerceAtLeast(0L)
             is PlaybackState.Paused -> state.positionMs
             PlaybackState.Stopped -> 0L
+            else -> 0L
         }
 
     fun playbackSupport(url: String): LegacyPlaybackSupport {

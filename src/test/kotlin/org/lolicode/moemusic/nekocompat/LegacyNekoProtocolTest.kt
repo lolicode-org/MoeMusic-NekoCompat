@@ -2,6 +2,7 @@ package org.lolicode.moemusic.nekocompat
 
 import org.lolicode.moemusic.api.model.PlaybackResource
 import org.lolicode.moemusic.api.model.TrackInfo
+import org.lolicode.moemusic.api.model.copy
 import org.lolicode.moemusic.api.model.toArtistInfos
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -13,20 +14,20 @@ class LegacyNekoProtocolTest {
         id = "track-1",
         title = "Track One",
         artists = listOf("Artist One").toArtistInfos(),
-        durationMs = 123_000,
-        sourceId = "source-a",
-        album = "Album One",
-        coverUrl = "https://example.com/cover.jpg",
-        submittedByUserName = "tester",
-        lyricLrc = "[00:00.00]hello",
-        secondaryLyricLrc = "[00:00.00]hola",
-    )
+        durationMs = 123_000) {
+            sourceId = "source-a"
+            album = "Album One"
+            coverUrl = "https://example.com/cover.jpg"
+            submittedByUserName = "tester"
+            lyricLrc = "[00:00.00]hello"
+            secondaryLyricLrc = "[00:00.00]hola"
+        }
 
     @Test
     fun `legacy hash is stable positive and source scoped`() {
         val a = LegacyNekoProtocol.legacyTrackId(sampleTrack)
         val b = LegacyNekoProtocol.legacyTrackId(sampleTrack)
-        val c = LegacyNekoProtocol.legacyTrackId(sampleTrack.copy(sourceId = "source-b"))
+        val c = LegacyNekoProtocol.legacyTrackId(sampleTrack.copy { sourceId = "source-b" })
 
         assertEquals(a, b)
         assertTrue(a > 0L)
@@ -54,7 +55,11 @@ class LegacyNekoProtocolTest {
     fun `playlist payload is capped to ten tracks and preserves album`() {
         val payload = LegacyNekoProtocol.playlistPayload(
             (1..12).map { index ->
-                sampleTrack.copy(id = "track-$index", title = "Track $index", album = "Album $index")
+                sampleTrack.copy {
+                    id = "track-$index"
+                    title = "Track $index"
+                    album = "Album $index"
+                }
             }
         )
 

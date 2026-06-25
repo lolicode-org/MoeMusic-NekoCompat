@@ -16,10 +16,10 @@ class QueueVisibilityTest {
             id = "track-1",
             title = "Track One",
             artists = emptyList(),
-            durationMs = 123_000,
-            sourceId = "source-a",
-            submittedByUserName = "tester",
-        )
+            durationMs = 123_000) {
+                sourceId = "source-a"
+                submittedByUserName = "tester"
+            }
     )
 
     @Test
