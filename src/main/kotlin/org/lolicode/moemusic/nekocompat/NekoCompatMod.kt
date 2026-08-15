@@ -16,12 +16,20 @@ object NekoCompatMod : ModInitializer {
 
         PlayPackets.registerServerChannel(LegacyNekoProtocol.CLIENT_HELLO_PACKET_ID)
         PlayPackets.registerServerReceiver(LegacyNekoProtocol.CLIENT_HELLO_PACKET_ID) { ctx, _ ->
-            NekoCompatBridge.onClientHello(ctx.player())
+            try {
+                NekoCompatBridge.onClientHello(ctx.player())
+            } catch (e: Exception) {
+                org.slf4j.LoggerFactory.getLogger(NekoCompatMod::class.java).error("Error handling NekoCompat CLIENT_HELLO", e)
+            }
         }
 
         PlayPackets.registerServerChannel(LegacyNekoProtocol.CLIENT_BYE_PACKET_ID)
         PlayPackets.registerServerReceiver(LegacyNekoProtocol.CLIENT_BYE_PACKET_ID) { ctx, _ ->
-            NekoCompatBridge.onClientBye(ctx.player())
+            try {
+                NekoCompatBridge.onClientBye(ctx.player())
+            } catch (e: Exception) {
+                org.slf4j.LoggerFactory.getLogger(NekoCompatMod::class.java).error("Error handling NekoCompat CLIENT_BYE", e)
+            }
         }
     }
 }
