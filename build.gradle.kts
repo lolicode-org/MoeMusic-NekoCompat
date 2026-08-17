@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    kotlin("jvm") version "2.4.0"
+    kotlin("jvm") version "2.4.10"
     id("net.fabricmc.fabric-loom") version "1.17-SNAPSHOT"
 }
 
@@ -35,15 +35,15 @@ java {
 
 dependencies {
     minecraft("com.mojang:minecraft:26.1.2")
-    implementation("net.fabricmc:fabric-loader:0.19.2")
-    implementation("net.fabricmc.fabric-api:fabric-api:0.146.1+26.1.2")
-    implementation("net.fabricmc:fabric-language-kotlin:1.13.10+kotlin.2.3.20")
+    implementation("net.fabricmc:fabric-loader:0.19.3")
+    implementation("net.fabricmc.fabric-api:fabric-api:0.155.2+26.1.2")
+    implementation("net.fabricmc:fabric-language-kotlin:1.13.13+kotlin.2.4.10")
 
-    implementation("org.lolicode.moemusic:api:2.1.1")
+    implementation("org.lolicode.moemusic:api:2.2.0")
     compileOnly("lol.bai:badpackets:fabric-0.12.2")
 
     testImplementation(kotlin("test"))
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.14.4")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:6.1.3")
 }
 
 tasks.test {
