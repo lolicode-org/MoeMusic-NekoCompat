@@ -73,6 +73,9 @@ internal object NekoCompatBridge {
         ctx.eventBus.subscribe<OnQueueTrackRemoved> {
             broadcastPlaylist()
         }
+        ctx.eventBus.subscribe<OnQueueCleared> {
+            broadcastPlaylist()
+        }
         ctx.eventBus.subscribe<OnPlaybackStartFailed> {
             if (!it.fromAutoplay) {
                 broadcastPlaylist()
